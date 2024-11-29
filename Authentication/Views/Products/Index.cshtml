@@ -1,0 +1,106 @@
+﻿@using Authentication.Helper
+@model IEnumerable<Authentication.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Product Management</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Create New</a>
+</p>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="float-sm-end">
+            <a href="#" class="btn btn-outline-light text-dark" data-bs-toggle="modal"
+               data-bs-target="#modalSearching" title="Searching Items">
+                <i class="bi bi-search"></i> Search
+            </a>
+            <a href="#" class="btn btn-outline-light text-dark" data-bs-toggle="modal"
+               data-bs-target="#modalSorting" title="Sorting Items">
+                <i class="bi bi-arrow-down-up"></i> Sort
+            </a>
+        </div>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                Image
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Discount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                <img class="product-image" src="~/products/@(item.Id).jpg" width="100" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Discount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.Id)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a>
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Details</a>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@await Html.PartialAsync("_NavigationButtons2")
+@await Html.PartialAsync("_SortingDialog")
+@await Html.PartialAsync("_SearchingDialog")
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".go").click(function () {
+                //lay value cua page-index
+                var pageIndex = $("#page-index").val();
+                //tao url
+                url = `/Products?pageIndex=${pageIndex}`
+                //cap nhat href bang url
+                $(this).attr("href", url);
+            });
+        });
+    </script>
+}
+<style>
+    .product-image {
+        border: 2px solid red;
+        border-radius: 50px;
+    }
+</style>

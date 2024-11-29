@@ -1,0 +1,52 @@
+﻿@using Authentication.Helper
+@model Authentication.Models.Order
+
+@{
+    ViewData["Title"] = "Order Detail";
+    int count = 1;
+    double totalPrice = 0;
+}
+
+<h2>Order Details</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Product ID</th>
+            <th>Product</th>
+            <th>
+                Image
+            </th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Discount</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var detail in Model.OrderDetails)
+        {
+            double itemTotalPrice = detail.Quantity * detail.Price * (1 - detail.Discount / 100); // Calculate the total price for this item
+            totalPrice += itemTotalPrice; // Add it to the total price
+            <tr>
+                <td>@count</td>
+                <td>@detail.ProductId</td>
+                <td>@detail.Product.Description</td>
+                <td><img class="product-image" src="~/products/@(detail.Product.Id).jpg" width="100" /></td>
+                <td>@detail.Quantity</td>
+                <td>@detail.Price</td>
+                <td>@detail.Discount</td>
+            </tr>
+            count++;
+        }
+    </tbody>
+</table>
+<h3 style="margin-left:990px">Total Price: @Math.Round(totalPrice, 2)</h3>
+<!-- Back Button -->
+<a asp-action="MonthlyRevenue" class="btn btn-primary" style="margin-left:1000px">Back to Monthly Revenue</a>
+<style>
+    .product-image {
+        border: 2px solid red;
+        border-radius: 50px;
+    }
+</style>

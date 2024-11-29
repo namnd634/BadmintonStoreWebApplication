@@ -1,0 +1,51 @@
+﻿@using Authentication.Helper
+@model IEnumerable<Authentication.Models.MonthlyRevenueViewModel>
+@{
+    ViewData["Title"] = "Monthly Revenue";
+}
+
+<h2>Monthly Revenue</h2>
+
+<form asp-action="MonthlyRevenue" method="post">
+    <div class="form-group">
+        <label for="month">Month</label>
+        <select id="month" name="month" class="form-control">
+            @for (int i = 1; i <= 12; i++)
+            {
+                <option value="@i">@i</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="year">Year</label>
+        <input type="number" id="year" name="year" class="form-control" value="@DateTime.Now.Year" />
+    </div>
+    <button type="submit" class="btn btn-primary">View</button>
+</form>
+
+@if (Model != null)
+{
+    <h3>Orders for @ViewBag.Month/@ViewBag.Year</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Order Date</th>
+                <th>Total Price</th>
+                <th>Total Discount</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model)
+            {
+                <tr>
+                    <td><a asp-action="OrderDetail" asp-route-id="@order.OrderId">@order.OrderId</a></td>
+                    <td>@order.OrderDate.ToString("MM/dd/yyyy")</td>
+                    <td>@Math.Round(order.TotalPrice, 2)</td>
+                    <td>@order.TotalDiscount</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <h4>Total Revenue: @ViewBag.TotalRevenue</h4>
+}

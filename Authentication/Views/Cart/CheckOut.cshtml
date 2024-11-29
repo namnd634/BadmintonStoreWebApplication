@@ -1,0 +1,93 @@
+﻿@model Authentication.Helper.Cart
+@using Authentication.Areas.Identity.Data
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<MyUser> SignInManager
+@inject UserManager<MyUser> UserManager
+
+@{
+    ViewData["Title"] = "Your Order";
+    MyUser? user = await UserManager.GetUserAsync(User);
+}
+
+<h1>Your Order</h1>
+<hr/>
+Date: @(DateTime.Today.ToString("MM/dd/yyyy"))<br/>
+Customer: @user.Name<br/>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                No.
+            </th>
+            <th>
+                Id
+            </th>
+            <th>
+                Image
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Category
+            </th>
+            <th style="text-align:right;">
+                Quantity
+            </th>
+            <th style="text-align:right;">
+                Old Price
+            </th>
+            <th style="text-align:right;">
+                Discount
+            </th>
+            <th style="text-align:right;">
+                New Price
+            </th>
+            <th style="text-align:right;">
+                Amount
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int count = 0;
+        }
+        @foreach (var item in Model.List.Values)
+        {
+            <tr>
+                <td>@(++count)</td>
+                <td>@item.Id</td>
+                <td><img src="~/products/@(item.Id).jpg" width="150" /></td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+                <td style="text-align:right;">
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td style="text-align:right;">
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td style="text-align:right;">
+                    @Html.DisplayFor(modelItem => item.Discount)
+                </td>
+                <td style="text-align:right;">
+                    @Html.DisplayFor(modelItem => item.NewPrice)
+                </td>
+                <td style="text-align:right;">
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <th colspan="9" style="text-align:right;">Total:</th>
+            <th style="text-align:right;">@Model.TotalAmount.ToString("C2")</th>
+        </tr>
+    </tfoot>
+</table>
+<a class="btn btn-primary" asp-action="Payment">Payment</a>

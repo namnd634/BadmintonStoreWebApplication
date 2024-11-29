@@ -1,0 +1,53 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\HK2333\\PT_Web\\DoAnCuoiKyMoiNhat\\YonexBadmintonStore\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{78A317DE-6266-42D1-8761-80406C5A44F0}|Authentication\\Authentication.csproj|d:\\hk2333\\pt_web\\doancuoikymoinhat\\yonexbadmintonstore\\authentication\\views\\products\\orderdetail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{78A317DE-6266-42D1-8761-80406C5A44F0}|Authentication\\Authentication.csproj|solutionrelative:authentication\\views\\products\\orderdetail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{78A317DE-6266-42D1-8761-80406C5A44F0}|Authentication\\Authentication.csproj|d:\\hk2333\\pt_web\\doancuoikymoinhat\\yonexbadmintonstore\\authentication\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{78A317DE-6266-42D1-8761-80406C5A44F0}|Authentication\\Authentication.csproj|solutionrelative:authentication\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "OrderDetail.cshtml",
+              "DocumentMoniker": "D:\\HK2333\\PT_Web\\DoAnCuoiKyMoiNhat\\YonexBadmintonStore\\Authentication\\Views\\Products\\OrderDetail.cshtml",
+              "RelativeDocumentMoniker": "Authentication\\Views\\Products\\OrderDetail.cshtml",
+              "ToolTip": "D:\\HK2333\\PT_Web\\DoAnCuoiKyMoiNhat\\YonexBadmintonStore\\Authentication\\Views\\Products\\OrderDetail.cshtml",
+              "RelativeToolTip": "Authentication\\Views\\Products\\OrderDetail.cshtml",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAACUAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-02T12:52:44.354Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\HK2333\\PT_Web\\DoAnCuoiKyMoiNhat\\YonexBadmintonStore\\Authentication\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Authentication\\Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\HK2333\\PT_Web\\DoAnCuoiKyMoiNhat\\YonexBadmintonStore\\Authentication\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Authentication\\Views\\Home\\Index.cshtml",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAgwBsAAABEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-02T12:48:41.873Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

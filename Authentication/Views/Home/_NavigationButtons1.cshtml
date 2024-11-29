@@ -1,0 +1,20 @@
+﻿@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+<div class="row">
+    <div class="col-sm-12">
+        <div class="float-sm-end">
+            <a class="btn btn-primary @prevDisabled" asp-route-pageindex="1">First</a>
+            <a class="btn btn-primary @prevDisabled" asp-route-pageindex="@(Model.PageIndex - 1)">Previous</a>
+            <a class="btn btn-primary @nextDisabled" asp-route-pageindex="@(Model.PageIndex + 1)">Next</a>
+            <a class="btn btn-primary @nextDisabled" asp-route-pageindex="@(Model.TotalPages)">Last</a>
+            <a class="btn btn-primary go">Go</a>
+            <input class="btn btn-outline-primary"
+                   style="width:60px;"
+                   type="number" min="1" max="@(Model.TotalPages)"
+                   id="page-index" value="@(Model.PageIndex)" />
+            /@(Model.TotalPages)
+        </div>
+    </div>
+</div>

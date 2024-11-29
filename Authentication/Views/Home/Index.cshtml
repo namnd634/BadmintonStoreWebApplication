@@ -1,0 +1,59 @@
+﻿@using Authentication.Helper
+@model PaginatedList<Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="float-sm-end">
+            <a href="#" class="btn btn-outline-light text-dark" data-bs-toggle="modal"
+               data-bs-target="#modalSearching" title="Searching Items">
+                <i class="bi bi-search"></i> Search
+            </a>
+            <a href="#" class="btn btn-outline-light text-dark" data-bs-toggle="modal"
+               data-bs-target="#modalSorting" title="Sorting Items">
+                <i class="bi bi-arrow-down-up"></i> Sort
+            </a>
+        </div>
+    </div>
+</div>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-4" style="padding:10px;">
+            <img class="product-image" src="~/products/@(item.Id).jpg" width="100%" /><br />
+@*             Id: @item.Id<br /> *@
+            <a style="font-weight: bold; font-size: 20px; color: red">@item.Description</a><br />
+            Old price: <strike>@(item.Price.ToString("C2"))</strike><br />
+            New price: <span style="color:red;font-size:24px;">@((item.Price * (1 - item.Discount)).ToString("C2"))</span><br />
+            Discount: @item.Discount.ToString("P0")<br />
+            Category: @item.Category.Name<br />
+            <a class="btn btn-info" asp-controller="Cart" asp-action="Add" asp-route-id="@item.Id"><i class="bi bi-cart-plus"></i> Add to Cart</a>
+        </div>
+    }
+</div>
+@await Html.PartialAsync("_NavigationButtons2")
+@await Html.PartialAsync("_SortingDialog")
+@await Html.PartialAsync("_SearchingDialog")
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".go").click(function () {
+                //lay value cua page-index
+                var pageIndex = $("#page-index").val();
+                //tao url
+                url = `/?pageIndex=${pageIndex}`
+                //cap nhat href bang url
+                $(this).attr("href", url);
+            });
+        });
+    </script>
+}
+<style>
+    .product-image {
+        border: 2px solid red; /* Change the color and width as needed */
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    }
+</style>
